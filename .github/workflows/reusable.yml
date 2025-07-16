@@ -14,3 +14,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Step that will fail, but won't stop the job
+        run: exit 1
+      - name: This step still runs
+        run: echo "Job continues even after the previous failure"
