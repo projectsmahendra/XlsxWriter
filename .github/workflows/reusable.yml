@@ -1,6 +1,6 @@
 name: Reuseable Workflow
 on:
-  workflow_dispatch:
+  workflow_call:
     inputs:
       arguments:
         description: 'Client JSON Payload'
@@ -8,7 +8,7 @@ on:
         default: '{}'
         required: true
 jobs:
-  job1:
+  checkout:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
