@@ -6,7 +6,7 @@ on:
         description: 'Client JSON Payload'
         type: string
         default: '{}'
-        required: true
+        required: false
 jobs:
   checkout:
     continue-on-error: true 
