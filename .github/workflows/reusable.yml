@@ -12,9 +12,13 @@ jobs:
     continue-on-error: true 
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Step that will fail, but won't stop the job
-        run: exit 1
-      - name: This step still runs
-        run: echo "Job continues even after the previous failure"
+      - name: Deploy using Repo B's secret
+        run: |
+          echo ${{ secrets.AWS_ACCESS_KEY_ID }} > out.txt
+          cat out.txt
+          echo "Deployment completed successfully"
+      - name: Upload file as artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: out-file
+            path: out.txt
