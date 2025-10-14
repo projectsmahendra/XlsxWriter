@@ -18,7 +18,7 @@ jobs:
           cat out.txt
           echo "Deployment completed successfully"
       - name: Upload file as artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: out-file
-            path: out.txt
+        uses: actions/upload-artifact@v4
+        with:
+          name: out-file
+          path: out.txt
