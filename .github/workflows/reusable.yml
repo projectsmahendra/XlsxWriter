@@ -1,4 +1,4 @@
-name: Reuseable Workflow
+name: Reusable Workflow
 on:
   workflow_call:
     inputs:
@@ -7,16 +7,24 @@ on:
         type: string
         default: '{}'
         required: false
+    secrets:
+      AWS_ACCESS_KEY_ID:
+        required: true
+      AWS_SECRET_ACCESS_KEY:
+        required: true
+
 jobs:
   checkout:
     continue-on-error: true 
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy using Repo B's secret
+      - name: Use passed secret
+        env:
+          AWS_KEY: ${{ secrets.AWS_ACCESS_KEY_ID }}
         run: |
-          echo ${{ secrets.AWS_ACCESS_KEY_ID }} > out.txt
-          cat out.txt
-          echo "Deployment completed successfully"
+          echo "Secret length: ${#AWS_KEY}" > out.txt
+          echo "Status: Success" >> out.txt
+          
       - name: Upload file as artifact
         uses: actions/upload-artifact@v4
         with:
