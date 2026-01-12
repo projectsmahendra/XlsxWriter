@@ -24,7 +24,7 @@ docx2txt==0.8
 ecdsa==0.15
 gunicorn==20.1.0
 hiredis==1.1.0
-idna==2.8
+idna==3.7
 importlib-resources==5.4.0
 jmespath==0.9.5
 joblib==1.1.0
